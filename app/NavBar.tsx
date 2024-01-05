@@ -1,7 +1,12 @@
+'use client'
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { WiEarthquake } from "react-icons/wi";
+import classNames from "classnames";
 
 const NavBar = () => {
+const currentPath = usePathname();
   const links = [
     {
       label: 'Dashboard',
@@ -26,7 +31,11 @@ const NavBar = () => {
         {links.map((link) => (
           <li key={link.href}>
             <Link href={link.href}
-              className="text-gray-800 hover:text-gray-400">{link.label}
+              className={classNames({
+                'text-orange-700': link.href === currentPath,
+                'text-gray-800': link.href !== currentPath,
+                'hover:text-gray-400 transition-colors' : true
+              })}>{link.label}
             </Link>
           </li>
         ))}
