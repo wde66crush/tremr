@@ -43,5 +43,4 @@ const currentPath = usePathname();
     </nav>
   );
 }
-
 export default NavBar
